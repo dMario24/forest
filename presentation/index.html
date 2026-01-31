@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>산불재난 연구데이터 분석 과정</title>
+		<title>산불재난 연구데이터 분석 과정 (심화)</title>
 
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/white.min.css">
@@ -16,95 +16,459 @@
             .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
                 font-family: "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
                 text-transform: none;
+                word-break: keep-all;
             }
             .reveal .slides {
                 text-align: left;
             }
-            .reveal p, .reveal ul, .reveal ol {
+            .reveal p, .reveal ul, .reveal ol, .reveal table {
                 font-family: "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
-                font-size: 0.8em;
+                font-size: 0.75em;
                 line-height: 1.6;
+            }
+            .reveal pre {
+                width: 100%;
+                box-shadow: none;
+            }
+            .reveal pre code {
+                font-size: 1.1em;
+                line-height: 1.4;
+                max-height: 500px;
             }
             .center-text {
                 text-align: center;
             }
             li {
-                margin-bottom: 10px;
+                margin-bottom: 8px;
+            }
+            .highlight-red {
+                color: #e74c3c;
+                font-weight: bold;
+            }
+            .highlight-blue {
+                color: #3498db;
+                font-weight: bold;
+            }
+            /* Custom utility for 2-column layout */
+            .col-container {
+                display: flex;
+            }
+            .col {
+                flex: 1;
+                padding: 10px;
             }
         </style>
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-                <!-- Slide 1: Title -->
-				<section class="center-text">
-					<h2>산불재난 연구데이터 분석 과정</h2>
-					<h4>파이썬 비전공자 및 초보자 대상</h4>
-                    <p><small>3일 완성 집중 과정 (하루 8시간)</small></p>
-				</section>
 
-                <!-- Slide 2: Goals -->
+                <!-- ================= INTRO ================= -->
 				<section>
-					<h3>1. 강의 목표</h3>
-                    <ul>
-                        <li><strong>대상 및 수준:</strong> 파이썬 비전공자 및 초보자를 대상으로 하며, 2~3일 내에 연구데이터 분석이 가능한 수준의 기초 역량을 확보하는 것을 목표로 합니다.</li>
-                        <li><strong>핵심 역량 습득:</strong> 산불재난 관련 연구 수행(논문, 프로젝트 등)에 필요한 데이터 분석 기초 역량을 단기간에 습득합니다.</li>
-                        <li><strong>결과물 활용:</strong> 실습을 통해 최종적으로 논문 및 보고서에 활용 가능한 표·그래프 작성과 분석 결과 요약을 수행할 수 있도록 합니다.</li>
-                        <li><strong>AI 활용:</strong> 생성형 AI 도구(ChatGPT, Gemini 등)를 활용하여 연구 주제 벤치마킹, 자료 조사, 분석 기획을 수행하는 방법을 익힙니다.</li>
-                    </ul>
-				</section>
+                    <section class="center-text">
+                        <h1>산불재난 연구데이터<br>분석 과정</h1>
+                        <h3>파이썬 비전공자 및 초보자 대상</h3>
+                        <p>3일 완성 집중 과정 (하루 8시간)</p>
+                        <p><small>Created for Research Data Analysis</small></p>
+                    </section>
 
-                <!-- Slide 3: Content & Flow -->
-				<section>
-					<h3>2. 주요 교육 내용 및 분석 흐름</h3>
-                    <p>교육은 이론보다는 실습 중심으로 진행되며, <strong>Google Colab</strong> 환경에서 다음과 같은 데이터 분석의 전체 흐름을 학습합니다.</p>
-                    <ol>
-                        <li><strong>데이터 불러오기:</strong> 외부 데이터 로드 및 확인</li>
-                        <li><strong>전처리:</strong> 결측치/이상치 처리, 데이터 필터링 및 정리</li>
-                        <li><strong>기술 통계:</strong> 평균, 분산, 표준편차 등 기초 통계 산출</li>
-                        <li><strong>시각화:</strong> Matplotlib 등을 활용한 데이터 시각화</li>
-                        <li><strong>결과 정리:</strong> 분석 결과 해석 및 보고서/논문용 요약 작성</li>
-                    </ol>
-				</section>
+                    <section>
+                        <h3>1. 강의 목표</h3>
+                        <ul>
+                            <li><strong>대상 및 수준:</strong> 파이썬 비전공자 및 초보자 (2~3일 내 기초 역량 확보)</li>
+                            <li><strong>핵심 역량:</strong> 산불재난 연구 수행(논문, 프로젝트)에 필요한 데이터 분석 기초</li>
+                            <li><strong>결과물:</strong> 논문/보고서용 표·그래프 작성, 분석 결과 요약</li>
+                            <li><strong>AI 활용:</strong> ChatGPT, Gemini 등을 활용한 연구 벤치마킹 및 코딩 지원</li>
+                        </ul>
+                    </section>
 
-                <!-- Slide 4: Day 1 -->
-				<section>
-					<h3>3. 일자별 세부 커리큘럼</h3>
-                    <h4>1일차: 파이썬 및 데이터 분석 기초 (2월 3일)</h4>
-                    <ul>
-                        <li>오리엔테이션 및 실습환경(Colab) 구축</li>
-                        <li>파이썬 기초 문법: 변수, 자료형, 연산자, 조건문, 반복문, 함수</li>
-                        <li>Pandas 기초: 데이터 불러오기, 기본 탐색, 컬럼/행 처리, 데이터 필터링</li>
-                    </ul>
-				</section>
-
-                <!-- Slide 5: Day 2 -->
-				<section>
-					<h3>3. 일자별 세부 커리큘럼</h3>
-                    <h4>2일차: 데이터 전처리 및 시각화 (2월 4일)</h4>
-                    <ul>
-                        <li>데이터 전처리 심화: 결측치 및 이상치 처리, 데이터 타입 변환</li>
-                        <li>데이터 요약 및 기술통계: 평균, 중앙값, 분산, 표준편차 등</li>
-                        <li>EDA(탐색적 데이터 분석) 기초 및 시각화 실습 (matplotlib 활용)</li>
-                    </ul>
-				</section>
-
-                <!-- Slide 6: Day 3 -->
-				<section>
-					<h3>3. 일자별 세부 커리큘럼</h3>
-                    <h4>3일차: 생성형 AI 활용 및 프로젝트 (2월 5일)</h4>
-                    <ul>
-                        <li>생성형 AI 도구(ChatGPT, Gemini) 이해 및 활용</li>
-                        <li>연구 주제 벤치마킹 및 자료 조사(리서치), 분석 기획(연구 질문 설정, 변수 정의)</li>
-                        <li>생성형 AI 기반 데이터 분석 지원 및 결과 도출</li>
-                        <li>논문/보고서용 결과 정리(표·그래프 구성) 및 개인별 미니 프로젝트 발표</li>
-                    </ul>
-				</section>
-
-                <!-- Slide 7: Closing -->
-                <section class="center-text">
-                    <h3>감사합니다</h3>
+                    <section>
+                        <h3>2. 전체 로드맵</h3>
+                        <div class="col-container">
+                            <div class="col">
+                                <h4>Day 1: 기초 다지기</h4>
+                                <ul>
+                                    <li>실습환경(Colab) 구축</li>
+                                    <li>파이썬 필수 문법</li>
+                                    <li>Pandas 데이터 다루기</li>
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <h4>Day 2: 분석 및 시각화</h4>
+                                <ul>
+                                    <li>데이터 전처리(결측/이상치)</li>
+                                    <li>기술 통계 분석</li>
+                                    <li>데이터 시각화(Matplotlib)</li>
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <h4>Day 3: AI 활용 & 프로젝트</h4>
+                                <ul>
+                                    <li>생성형 AI 활용법</li>
+                                    <li>연구 기획 및 실행</li>
+                                    <li>미니 프로젝트 발표</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
                 </section>
+
+                <!-- ================= DAY 1 ================= -->
+                <section>
+                    <section class="center-text" data-background-color="#f0f8ff">
+                        <h2>Day 1: 파이썬 및 데이터 분석 기초</h2>
+                        <p>데이터 분석을 위한 첫 걸음</p>
+                    </section>
+
+                    <section>
+                        <h3>1-1. 오리엔테이션 및 환경 구축</h3>
+                        <h4>Google Colab이란?</h4>
+                        <ul>
+                            <li>구글에서 제공하는 클라우드 기반 주피터 노트북 환경</li>
+                            <li>별도의 설치 없이 브라우저에서 바로 파이썬 코드 실행 가능</li>
+                            <li>GPU/TPU 무료 지원 (딥러닝 활용 시 유리)</li>
+                            <li>데이터 분석 입문자에게 최적의 환경</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Colab 시작하기</h3>
+                        <ol>
+                            <li>Google 계정 로그인</li>
+                            <li><a href="https://colab.research.google.com" target="_blank">colab.research.google.com</a> 접속</li>
+                            <li>[새 노트] 클릭</li>
+                            <li>파일명 변경: <code>wildfire_analysis_day1.ipynb</code></li>
+                        </ol>
+                        <br><br>
+                        <div class="fragment">
+                            <p><strong>Tip:</strong> <code>Ctrl + Enter</code>로 셀 실행, <code>Shift + Enter</code>로 실행 후 다음 셀 이동</p>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3>1-2. 파이썬 기초 문법 (변수와 자료형)</h3>
+                        <pre><code class="python">
+# 변수 선언
+fire_count = 150        # 정수형 (int)
+damaged_area = 30.5     # 실수형 (float)
+location = "강원도"      # 문자열 (str)
+is_active = False       # 불리언 (bool)
+
+# 출력 확인
+print(f"발생 지역: {location}")
+print(f"피해 면적: {damaged_area} ha")
+                        </code></pre>
+                        <p>변수는 데이터를 담는 그릇입니다. 산불 데이터의 속성(면적, 지역 등)을 변수로 표현해봅시다.</p>
+                    </section>
+
+                    <section>
+                        <h3>리스트(List)와 딕셔너리(Dictionary)</h3>
+                        <pre><code class="python">
+# 리스트: 순서가 있는 데이터 묶음
+locations = ["강릉", "삼척", "고성", "동해"]
+print(locations[0])  # 강릉
+
+# 딕셔너리: 키(Key)와 값(Value)의 쌍
+fire_info = {
+    "date": "2023-04-11",
+    "loc": "강릉",
+    "area": 379
+}
+print(fire_info["area"])  # 379
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>조건문 (if-else)</h3>
+                        <p>데이터를 필터링하거나 조건을 판단할 때 사용합니다.</p>
+                        <pre><code class="python">
+area = 150
+
+if area >= 100:
+    print("대형 산불입니다.")
+    category = "Large"
+elif area >= 30:
+    print("중형 산불입니다.")
+    category = "Medium"
+else:
+    print("소형 산불입니다.")
+    category = "Small"
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>반복문 (for)</h3>
+                        <p>여러 데이터를 순차적으로 처리할 때 사용합니다.</p>
+                        <pre><code class="python">
+areas = [10, 55, 120, 5]
+total_area = 0
+
+for a in areas:
+    total_area += a
+    if a >= 100:
+        print(f"대형 산불 발견: {a} ha")
+
+print(f"총 피해 면적: {total_area} ha")
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>함수 (Function)</h3>
+                        <p>반복되는 코드를 묶어서 재사용성을 높입니다.</p>
+                        <pre><code class="python">
+def classify_fire(area):
+    """피해 면적에 따라 산불 등급을 반환하는 함수"""
+    if area >= 100:
+        return "대형"
+    elif area >= 30:
+        return "중형"
+    else:
+        return "소형"
+
+# 함수 사용
+print(classify_fire(120))  # 대형
+print(classify_fire(15))   # 소형
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>1-3. Pandas 기초 (데이터 분석의 핵심)</h3>
+                        <p><strong>Pandas</strong>는 행과 열로 이루어진 2차원 데이터를 다루는 데 가장 강력한 라이브러리입니다.</p>
+                        <pre><code class="python">
+import pandas as pd
+
+# 가상의 산불 데이터 생성
+data = {
+    "date": ["2023-01-01", "2023-01-05", "2023-02-10", "2023-03-01"],
+    "location": ["서울", "경기", "강원", "경북"],
+    "cause": ["담뱃불", "소각", "입산자실화", "원인미상"],
+    "area": [0.5, 1.2, 55.0, 120.0]
+}
+
+df = pd.DataFrame(data)
+df
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>데이터 불러오기 및 저장하기</h3>
+                        <pre><code class="python">
+# CSV 파일 불러오기 (Excel 파일은 read_excel)
+# df = pd.read_csv("wildfire_data.csv", encoding="cp949")
+
+# 데이터 정보 확인
+df.info()      # 컬럼별 타입, 결측치 개수 등 확인
+df.head()      # 상위 5개 행 출력
+df.describe()  # 수치형 데이터 기초 통계 (평균, 최소, 최대 등)
+                        </code></pre>
+                        <p class="fragment highlight-red">Tip: 한글이 포함된 CSV는 `encoding="cp949"` 또는 `encoding="euc-kr"` 옵션이 필요한 경우가 많습니다.</p>
+                    </section>
+
+                    <section>
+                        <h3>데이터 선택 및 필터링</h3>
+                        <pre><code class="python">
+# 특정 컬럼 선택
+print(df["location"])
+
+# 조건부 필터링 (Boolean Indexing)
+# 피해 면적이 10ha 이상인 데이터만 추출
+large_fires = df[df["area"] >= 10]
+
+# 여러 조건 (AND: &, OR: |)
+# 강원도이면서 피해면적이 30 이상인 경우
+target = df[(df["location"] == "강원") & (df["area"] >= 30)]
+                        </code></pre>
+                    </section>
+                </section>
+
+                <!-- ================= DAY 2 ================= -->
+                <section>
+                    <section class="center-text" data-background-color="#fff5f0">
+                        <h2>Day 2: 데이터 전처리 및 시각화</h2>
+                        <p>데이터를 깨끗하게 만들고 인사이트 발견하기</p>
+                    </section>
+
+                    <section>
+                        <h3>2-1. 데이터 전처리 심화</h3>
+                        <h4>결측치(Missing Values) 처리</h4>
+                        <p>데이터가 비어있는 경우(NaN) 분석 오류를 유발하므로 적절한 처리가 필요합니다.</p>
+                        <pre><code class="python">
+# 결측치 확인
+df.isnull().sum()
+
+# 1. 결측치가 있는 행 제거
+df_clean = df.dropna()
+
+# 2. 특정 값으로 채우기 (예: 평균값, 0)
+mean_val = df["area"].mean()
+df["area"] = df["area"].fillna(mean_val)
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>이상치(Outlier) 처리</h3>
+                        <p>통계적으로 비정상적으로 크거나 작은 값은 분석 결과를 왜곡할 수 있습니다.</p>
+                        <pre><code class="python">
+# 기술 통계로 이상치 짐작해보기
+print(df["area"].describe())
+
+# IQR 방식 등으로 제거하거나,
+# 도메인 지식에 따라 별도 그룹으로 분류하여 분석합니다.
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>데이터 타입 변환</h3>
+                        <p>날짜 정보가 문자열(string)로 되어 있다면 날짜형(datetime)으로 변환해야 시계열 분석이 가능합니다.</p>
+                        <pre><code class="python">
+# 문자열 -> 날짜형 변환
+df["date"] = pd.to_datetime(df["date"])
+
+# 월(Month), 요일(Weekday) 추출
+df["month"] = df["date"].dt.month
+df["weekday"] = df["date"].dt.day_name()
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>2-2. 기술 통계 및 그룹 분석</h3>
+                        <h4>Group By: 범주별 통계 산출</h4>
+                        <p>지역별, 원인별 산불 통계를 구해봅시다.</p>
+                        <pre><code class="python">
+# 지역별 피해 면적 합계
+area_by_loc = df.groupby("location")["area"].sum()
+print(area_by_loc)
+
+# 원인별 발생 건수
+count_by_cause = df["cause"].value_counts()
+print(count_by_cause)
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>2-3. 데이터 시각화 (Matplotlib & Seaborn)</h3>
+                        <p>숫자만으로는 보이지 않는 패턴을 그래프로 표현합니다.</p>
+                        <pre><code class="python">
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# 한글 폰트 설정 (Colab용)
+!sudo apt-get install -y fonts-nanum
+!sudo fc-cache -fv
+!rm ~/.cache/matplotlib -rf
+# (런타임 재시작 필요)
+plt.rc('font', family='NanumBarunGothic')
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>막대 그래프 (Bar Chart)</h3>
+                        <p>범주형 데이터의 크기 비교에 적합합니다. (예: 지역별 피해액)</p>
+                        <pre><code class="python">
+plt.figure(figsize=(10, 6))
+sns.barplot(data=df, x="location", y="area", errorbar=None)
+plt.title("지역별 평균 피해 면적")
+plt.xlabel("지역")
+plt.ylabel("피해 면적 (ha)")
+plt.show()
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>선 그래프 (Line Chart)</h3>
+                        <p>시간의 흐름에 따른 변화 추이를 보여줍니다. (예: 월별 산불 발생 건수)</p>
+                        <pre><code class="python">
+monthly_counts = df.groupby("month")["date"].count()
+
+plt.figure(figsize=(10, 5))
+plt.plot(monthly_counts.index, monthly_counts.values, marker='o')
+plt.title("월별 산불 발생 추이")
+plt.grid(True)
+plt.show()
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>산점도 (Scatter Plot)</h3>
+                        <p>두 수치형 변수 간의 관계를 파악합니다. (예: 습도와 피해 면적)</p>
+                        <pre><code class="python">
+plt.figure(figsize=(8, 8))
+sns.scatterplot(data=df, x="humidity", y="area", hue="cause")
+plt.title("습도와 피해 면적의 상관관계")
+plt.show()
+                        </code></pre>
+                    </section>
+                </section>
+
+                <!-- ================= DAY 3 ================= -->
+                <section>
+                    <section class="center-text" data-background-color="#f5f5f5">
+                        <h2>Day 3: 생성형 AI 활용 및 프로젝트</h2>
+                        <p>AI와 함께하는 스마트한 연구 데이터 분석</p>
+                    </section>
+
+                    <section>
+                        <h3>3-1. 생성형 AI 도구 활용법</h3>
+                        <h4>ChatGPT / Gemini 활용 원칙</h4>
+                        <ul>
+                            <li><strong>구체적인 지시(Prompt):</strong> 막연한 질문보다는 데이터 구조와 원하는 결과를 명확히 설명하세요.</li>
+                            <li><strong>코드 생성 요청:</strong> "Pandas로 'location' 컬럼별 'area' 합계를 구하고 막대 그래프를 그리는 코드를 짜줘."</li>
+                            <li><strong>오류 수정(Debugging):</strong> 에러 메시지를 그대로 복사해서 붙여넣고 해결책을 물어보세요.</li>
+                            <li><strong>검증 필수:</strong> AI가 생성한 코드가 항상 정답은 아닙니다. 반드시 실행하고 결과를 확인해야 합니다.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>프롬프트 예시 (연구 벤치마킹)</h3>
+                        <div style="background-color: #eee; padding: 15px; border-radius: 5px;">
+                            <p><strong>User:</strong> "나는 최근 10년 간의 한국 산불 데이터를 분석하여 '기후 변화가 대형 산불에 미치는 영향'에 대한 소논문을 쓰려고 해. 어떤 변수들을 중점적으로 분석하면 좋을지, 그리고 어떤 시각화가 효과적일지 제안해줘."</p>
+                        </div>
+                        <p class="fragment">AI는 기상 데이터(온도, 습도, 풍속)와 산불 피해 면적 간의 상관분석, 월별 발생 빈도 히트맵 등을 제안해 줄 것입니다.</p>
+                    </section>
+
+                    <section>
+                        <h3>프롬프트 예시 (코드 작성)</h3>
+                        <div style="background-color: #eee; padding: 15px; border-radius: 5px;">
+                            <p><strong>User:</strong> "내 DataFrame `df`에는 `date`(날짜), `cause`(원인), `area`(면적) 컬럼이 있어. 원인(`cause`) 중에서 상위 5개만 추려서, 각 원인별 피해 면적 분포를 박스플롯(boxplot)으로 시각화하는 파이썬 코드를 작성해줘. 한글 폰트 설정도 포함해줘."</p>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3>3-2. 미니 프로젝트 기획</h3>
+                        <h4>단계별 가이드</h4>
+                        <ol>
+                            <li><strong>주제 선정:</strong> 관심 있는 키워드 (예: 봄철 산불, 강원도 대형 산불, 실화 원인 등)</li>
+                            <li><strong>데이터 수집/준비:</strong> 제공된 예제 데이터 또는 공공데이터포털 활용</li>
+                            <li><strong>분석 질문(RQ) 설정:</strong>
+                                <ul>
+                                    <li>"산불은 무슨 요일에 가장 많이 발생하는가?"</li>
+                                    <li>"강풍 주의보가 발령된 날의 피해 면적이 더 큰가?"</li>
+                                </ul>
+                            </li>
+                            <li><strong>분석 및 시각화 수행</strong></li>
+                            <li><strong>결과 해석 및 요약</strong></li>
+                        </ol>
+                    </section>
+
+                    <section>
+                        <h3>3-3. 결과 정리 및 발표</h3>
+                        <h4>논문/보고서용 표·그래프 작성 팁</h4>
+                        <ul>
+                            <li><strong>가독성:</strong> 축 라벨, 범례, 제목을 명확히 기재합니다.</li>
+                            <li><strong>단순화:</strong> 불필요한 장식(3D 효과 등)을 피하고 정보 전달에 집중합니다.</li>
+                            <li><strong>해석:</strong> 그래프 아래에는 반드시 "Figure 1은 ~을 보여준다"와 같은 캡션과 해석을 덧붙입니다.</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <!-- ================= CLOSING ================= -->
+                <section class="center-text">
+                    <h2>수고하셨습니다!</h2>
+                    <p>이제 여러분은 파이썬을 활용해 산불 데이터를 직접 분석하고<br>연구에 활용할 수 있는 기초 역량을 갖추셨습니다.</p>
+                    <br>
+                    <p><small>본 자료는 산불재난 연구데이터 분석 과정을 위해 제작되었습니다.</small></p>
+                </section>
+
 			</div>
 		</div>
 
@@ -113,13 +477,9 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/markdown/markdown.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/highlight/highlight.min.js"></script>
 		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
 			Reveal.initialize({
 				hash: true,
-
-				// Learn about plugins: https://revealjs.com/plugins/
+                slideNumber: true,
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
 			});
 		</script>
