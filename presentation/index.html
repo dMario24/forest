@@ -1,386 +1,430 @@
 <!doctype html>
 <html lang="ko">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<head>
+    <meta charset="utf-8">
+    <title>산불 연구 데이터 분석 교육 (3일 과정)</title>
+    <meta name="description" content="파이썬 및 AI 활용 산불 연구 데이터 분석 역량 강화 과정">
+    <meta name="author" content="Forest Fire Research Lab">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<title>산불재난 연구데이터 분석 과정 (심화)</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/night.css" id="theme">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/monokai.min.css">
 
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/white.min.css">
+    <style>
+       .reveal h1,.reveal h2,.reveal h3 { font-family: 'Malgun Gothic', sans-serif; text-transform: none; }
+       .reveal p,.reveal li { font-family: 'Malgun Gothic', sans-serif; font-size: 0.9em; line-height: 1.6; }
+       .code-wrapper { background-color: #272822; padding: 10px; border-radius: 5px; }
+       .two-col { display: flex; justify-content: space-between; }
+       .col { flex: 1; padding: 10px; }
+       .small-text { font-size: 0.7em!important; }
+       .emphasize { color: #e7ad52; font-weight: bold; }
+    </style>
+</head>
+<body>
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/highlight/monokai.min.css">
+<div class="reveal">
+    <div class="slides">
 
-        <style>
-            .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
-                font-family: "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
-                text-transform: none;
-                word-break: keep-all;
-            }
-            .reveal .slides {
-                text-align: left;
-            }
-            .reveal p, .reveal ul, .reveal ol, .reveal table {
-                font-family: "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
-                font-size: 0.75em;
-                line-height: 1.6;
-            }
-            .reveal table {
-                width: 100%;
-                border-collapse: collapse;
-            }
-            .reveal th, .reveal td {
-                border: 1px solid #ccc;
-                padding: 8px;
-                font-size: 0.6em;
-            }
-            .reveal th {
-                background-color: #f2f2f2;
-                font-weight: bold;
-            }
-            .reveal pre {
-                width: 100%;
-                box-shadow: none;
-            }
-            .reveal pre code {
-                font-size: 1.1em;
-                line-height: 1.4;
-                max-height: 500px;
-            }
-            .center-text {
-                text-align: center;
-            }
-            li {
-                margin-bottom: 8px;
-            }
-            .highlight-red {
-                color: #e74c3c;
-                font-weight: bold;
-            }
-            .highlight-blue {
-                color: #3498db;
-                font-weight: bold;
-            }
-            /* Custom utility for 2-column layout */
-            .col-container {
-                display: flex;
-            }
-            .col {
-                flex: 1;
-                padding: 10px;
-            }
-        </style>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
+        <section>
+            <h1>산불 연구 데이터 분석<br>역량 강화 과정</h1>
+            <h3>Python & Generative AI 활용</h3>
+            <p>
+                <small>대상: 산림/재난 분야 연구자 (비전공자 포함)</small><br>
+                <small>기간: 3 Days (24H)</small>
+            </p>
+        </section>
 
-                <!-- ================= 서론 ================= -->
-				<section>
-                    <section class="center-text">
-                        <h1>산불재난 연구데이터<br>분석 과정</h1>
-                        <h3>파이썬 및 AI 활용 교육과정 심층 연구 보고서</h3>
-                        <p>데이터 기반 산불 재난 관리의 패러다임 전환</p>
-                    </section>
+        <section>
+            <h2>교육 목표</h2>
+            <ul>
+                <li class="fragment">📊 <b>데이터 기초:</b> 산불/기상 데이터의 구조 이해 및 전처리</li>
+                <li class="fragment">🐍 <b>Python 활용:</b> 연구 자동화를 위한 필수 코딩 역량 확보</li>
+                <li class="fragment">📈 <b>시각화:</b> 논문용 고품질 그래프 작성 (Matplotlib, Seaborn)</li>
+                <li class="fragment">🤖 <b>AI 접목:</b> ChatGPT/Gemini를 활용한 코딩 및 분석 보조</li>
+            </ul>
+        </section>
 
-                    <section>
-                        <h3>서론: 패러다임의 전환</h3>
-                        <ul>
-                            <li><strong>배경:</strong> 기후 변화로 인한 전 지구적 산불 발생 빈도 및 강도 증가 (사회적, 경제적 재난 확대).</li>
-                            <li><strong>변화:</strong> 경험과 인력 중심의 전통적 진화 체계 → 데이터 기반의 과학적 분석과 예측 시스템으로 전환.</li>
-                            <li><strong>핵심 자원:</strong> 산림청, 기상청 등 공공기관의 방대한 산림/기상 데이터.</li>
-                            <li><strong>목표:</strong> 산불 발생 메커니즘 규명, 확산 예측, 진화 자원 최적 배치.</li>
-                        </ul>
-                    </section>
-                </section>
+        <section>
+            <h2>전체 커리큘럼</h2>
+            <table>
+                <thead>
+                    <tr><th>일차</th><th>주제</th><th>핵심 내용</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>1일차</td><td>Foundations</td><td>Colab 환경, 파이썬 기초, Pandas 데이터 로드</td></tr>
+                    <tr><td>2일차</td><td>EDA & Viz</td><td>데이터 전처리, 이상치 제거, 통계 시각화</td></tr>
+                    <tr><td>3일차</td><td>Modeling & AI</td><td>머신러닝 예측, 생성형 AI 활용 연구</td></tr>
+                </tbody>
+            </table>
+        </section>
 
-                <!-- ================= 제1장: 교육 환경 및 기초 프로그래밍 전략 (1일차 오전) ================= -->
-                <section>
-                    <section class="center-text" data-background-color="#f0f8ff">
-                        <h2>제1장: 교육 환경 및<br>기초 프로그래밍 전략</h2>
-                        <p>1일차 오전: 연구 환경 구축 및 파이썬 기초</p>
-                    </section>
+        <section>
+            <section data-background-gradient="linear-gradient(to bottom, #283048, #859398)">
+                <h2>Day 1: 연구 환경 구축 및 기초</h2>
+                <p>Google Colab & Python Syntax</p>
+            </section>
 
-                    <section>
-                        <h3>1.1 클라우드 기반 연구 환경: Google Colab</h3>
-                        <p>연구자들의 가장 큰 장애물인 '환경 설정' 문제를 해결하기 위한 최적의 대안.</p>
-                        <ul>
-                            <li><strong>접근성/편의성:</strong> 설치 없이 구글 계정으로 즉시 사용 가능 (IT 비전공자 친화적).</li>
-                            <li><strong>협업/공유:</strong> 구글 드라이브 연동, 코드 실시간 공유 (공동 연구에 최적).</li>
-                            <li><strong>고성능 자원:</strong> GPU 무료 지원 (딥러닝, 위성 이미지 처리 등 고부하 작업 가능).</li>
-                        </ul>
-                    </section>
+            <section>
+                <h3>1.1 Google Colab 시작하기</h3>
+                <p>별도의 설치 없이 브라우저에서 Python 실행 가능</p>
+                <ul>
+                    <li><b>접속:</b> <a href="https://colab.research.google.com" target="_blank">colab.research.google.com</a></li>
+                    <li><b>새 노트:</b> [파일] > [새 노트]</li>
+                    <li><b>셀 실행:</b> `Shift + Enter`</li>
+                </ul>
+                <div class="code-wrapper fragment">
+                    <pre><code class="python">
+# 첫 번째 파이썬 코드 실행해보기
+print("산불 데이터 분석 과정을 시작합니다.")
+# 결과: 산불 데이터 분석 과정을 시작합니다.
+                    </code></pre>
+                </div>
+            </section>
 
-                    <section>
-                        <h3>1.1.1 Colab 인터페이스 및 워크플로우</h3>
-                        <ul>
-                            <li><strong>파일 생성:</strong> `.ipynb` 확장자 (코드 + 텍스트 + 시각화 통합 문서).</li>
-                            <li><strong>코드 셀 (Code Cell):</strong> 실제 파이썬 명령어 실행 공간.</li>
-                            <li><strong>텍스트 셀 (Text Cell):</strong> 연구 방법론, 가설, 해석 기록 (연구 재현성 확보).</li>
-                        </ul>
-                    </section>
+            <section>
+                <h3>1.2 변수(Variables)와 데이터 타입</h3>
+                <p>산불 데이터는 어떤 형태로 저장될까?</p>
+                <div class="code-wrapper">
+                    <pre><code class="python">
+# 1. 수치형 (Numerical)
+temp = 25.5       # 기온 (float)
+wind_speed = 3    # 풍속 (int)
 
-                    <section>
-                        <h3>1.2 연구자를 위한 파이썬 핵심 문법</h3>
-                        <p>산불 데이터 유형에 맞춘 변수 및 데이터 타입 교육.</p>
-                        <ul>
-                            <li><strong>수치형:</strong> 기온(Float), 습도(Float), 풍속(Float), 발생 건수(Integer).</li>
-                            <li><strong>문자열:</strong> 지역명('강원도', 'Bejaia'), 요일('mon'). *인코딩(UTF-8, CP949) 주의 필요.</li>
-                            <li><strong>리스트:</strong> 시계열 데이터 (일별 최고 기온 나열).</li>
-                            <li><strong>딕셔너리:</strong> 구조화된 데이터 (특정 날짜의 기상 정보 Key-Value 쌍).</li>
-                        </ul>
-                    </section>
+# 2. 문자열 (String)
+region = "Gangwon-do"  # 지역명
+cause = "입산자 실화"   # 발생원인
 
-                    <section>
-                        <h3>1.2.2 제어문과 라이브러리 활용</h3>
-                        <p>논리적 판단을 코드로 구현하는 실습.</p>
-                        <pre><code class="python">
-# 예제: 산불 경보 발령 로직
-humidity = 25  # 습도 (%)
-wind_speed = 12 # 풍속 (m/s)
+# 3. 리스트 (List) - 시계열 데이터
+daily_temp = [24.1, 25.5, 26.0, 23.8]
 
-if humidity < 30 and wind_speed >= 10:
-    print("🚨 [위험] 산불경보 발령 조건 충족")
+# 4. 딕셔너리 (Dictionary) - 구조화된 데이터
+fire_data = {
+    "date": "2024-04-05",
+    "area": 1.5,  # ha
+    "loc": [37.5, 128.5] # 위경도
+}
+                    </code></pre>
+                </div>
+            </section>
+
+            <section>
+                <h3>1.3 제어문: 산불 경보 로직 구현</h3>
+                <p>조건문(if)을 활용한 간단한 경보 시스템 실습</p>
+                <div class="code-wrapper">
+                    <pre><code class="python">
+humidity = 25   # 실효습도 (%)
+wind = 12       # 풍속 (m/s)
+
+# 산불 경보 발령 로직
+if humidity < 30 and wind >= 10:
+    print("🚨 [경보] 대형 산불 위험! 입산 통제 필요.")
+elif humidity < 40:
+    print("⚠️ [주의] 건조 주의보.")
 else:
-    print("✅ 기상 조건 양호")
-                        </code></pre>
-                        <p><strong>필수 라이브러리:</strong> <code>NumPy</code> (수치 연산), <code>Pandas</code> (데이터 프레임 처리).</p>
-                    </section>
-                </section>
+    print("✅ [양호] 산불 위험 낮음.")
+                    </code></pre>
+                </div>
+            </section>
 
-                <!-- ================= 제2장: 산불 연구 데이터의 구조와 전처리 (1일차 오후) ================= -->
-                <section>
-                    <section class="center-text" data-background-color="#fff5f0">
-                        <h2>제2장: 산불 연구 데이터의<br>구조와 전처리</h2>
-                        <p>1일차 오후: 데이터 품질 확보와 가공</p>
-                    </section>
+            <section>
+                <h3>1.4 Pandas 라이브러리 소개</h3>
+                <p>엑셀보다 강력한 데이터 분석 도구</p>
+                <ul>
+                    <li><b>DataFrame:</b> 행(Row)과 열(Column)로 구성된 표 데이터 구조</li>
+                    <li><b>Series:</b> 하나의 열(Column)에 해당하는 1차원 데이터</li>
+                </ul>
+                <div class="code-wrapper fragment">
+                    <pre><code class="python">
+import pandas as pd
 
-                    <section>
-                        <h3>2.1 글로벌 표준 데이터셋: UCI 산불 데이터</h3>
-                        <h4>2.1.1 알제리 산불 데이터셋 (Algerian Forest Fires)</h4>
-                        <ul>
-                            <li><strong>기간/장소:</strong> 2012년 6~9월, Bejaia & Sidi-Bel Abbes 지역 (244건).</li>
-                            <li><strong>특징:</strong> 결측치가 거의 없는 깨끗한 데이터셋 (초보자용).</li>
-                            <li><strong>Target:</strong> `Classes` (fire / not fire) → 이진 분류 모델 실습 최적화.</li>
-                            <li><strong>FWI 요소:</strong> FFMC, DMC, DC, ISI, BUI, FWI (산불 기상 지수).</li>
-                        </ul>
-                    </section>
+# UCI 알제리 산불 데이터셋 로드 예시
+url = "https://raw.githubusercontent.com/user/repo/data/algerian_fires.csv"
+# 실제 파일 경로 또는 URL 입력
+df = pd.read_csv("algerian_forest_fires_dataset.csv")
 
-                    <section>
-                        <h4>[표 1] 알제리 산불 데이터셋 주요 변수 정의</h4>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>변수명</th><th>전체 이름</th><th>설명</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>Temp</td><td>Temperature</td><td>정오 기준 최고 기온 (°C). 연료 건조의 주요 요인.</td></tr>
-                                <tr><td>RH</td><td>Relative Humidity</td><td>상대습도 (%). 산불 위험과 반비례.</td></tr>
-                                <tr><td>Ws</td><td>Wind Speed</td><td>풍속 (km/h). 확산 속도(ISI) 결정 변수.</td></tr>
-                                <tr><td>FFMC</td><td>Fine Fuel Moisture Code</td><td>미세 연료 수분 코드. 기상 변화에 민감.</td></tr>
-                                <tr><td>FWI</td><td>Fire Weather Index</td><td>종합 산불 기상 지수. 산불 강도 지표.</td></tr>
-                            </tbody>
-                        </table>
-                    </section>
+# 데이터 구조 확인
+print(df.shape)  # (244, 14) -> 244행 14열
+                    </code></pre>
+                </div>
+            </section>
 
-                    <section>
-                        <h4>2.1.2 포르투갈 산불 데이터셋 (Forest Fires)</h4>
-                        <ul>
-                            <li><strong>장소:</strong> Montesinho Natural Park (517건).</li>
-                            <li><strong>특징:</strong> 피해 면적(`area`)이 0에 치우친 왜곡된 분포 (데이터 불균형).</li>
-                            <li><strong>전처리 핵심:</strong> 로그 변환(Log Transformation) 적용 (`ln(x+1)`) 필수.</li>
-                        </ul>
-                        <pre><code class="python">
-import numpy as np
+            <section>
+                <h3>1.5 데이터 탐색 기초 (Head & Info)</h3>
+                <div class="two-col">
+                    <div class="col">
+                        <p>상위 5개 데이터 확인</p>
+                        <pre><code class="python">df.head()</code></pre>
+                    </div>
+                    <div class="col">
+                        <p>데이터 타입 및 결측치 확인</p>
+                        <pre><code class="python">df.info()</code></pre>
+                    </div>
+                </div>
+                <div class="code-wrapper fragment">
+                    <pre><code class="python">
+# 기초 통계량 확인 (평균, 표준편차 등)
+# 기온, 습도, 풍속 등의 분포를 한눈에 파악
+df.describe()
+                    </code></pre>
+                </div>
+            </section>
+        </section>
 
-# 피해 면적의 왜곡된 분포 보정
-df['log_area'] = np.log1p(df['area'])
-                        </code></pre>
-                    </section>
+        <section>
+            <section data-background-gradient="linear-gradient(to bottom, #00416A, #E4E5E6)">
+                <h2>Day 2: 데이터 전처리 및 시각화</h2>
+                <p>Cleaning, Filtering, & Visualization</p>
+            </section>
 
-                    <section>
-                        <h3>2.2 국내 공공데이터 활용</h3>
-                        <ul>
-                            <li><strong>산림청 데이터:</strong> 발생 원인('기타', '입산자 실화'), 피해 면적 등. 인코딩(`cp949`), 날짜 변환 전처리 필요.</li>
-                            <li><strong>기상청 ASOS 데이터:</strong> 분/시간 단위 상세 기상 정보.</li>
-                            <li><strong>데이터 병합 (Merge):</strong> 산불 발생 위치/시간을 기준으로 가장 가까운 기상 관측소 데이터를 매칭(Join)하는 고급 전처리 기술 교육.</li>
-                        </ul>
-                    </section>
+            <section>
+                <h3>2.1 데이터 정제 (Cleaning)</h3>
+                <p>결측치(Null)와 중복값 처리</p>
+                <div class="code-wrapper">
+                    <pre><code class="python">
+# 1. 결측치 확인
+print(df.isnull().sum())
 
-                    <section>
-                        <h3>2.3 데이터 정제 및 이상치 처리</h3>
-                        <h4>2.3.1 결측치 (Missing Value)</h4>
-                        <p>단순 평균 대체보다는 시계열 특성을 고려한 <code>ffill</code>(Forward Fill)이나 선형 보간법 권장.</p>
-                        <h4>2.3.2 이상치 (Outlier) - IQR 기법</h4>
-                        <pre><code class="python">
-# IQR을 이용한 이상치 탐지 예시
-Q1 = df['Ws'].quantile(0.25)
-Q3 = df['Ws'].quantile(0.75)
+# 2. 결측치 처리 (예: 평균값 대체 또는 삭제)
+# 시계열 기상 데이터는 직전 값으로 채우기(ffill)가 유리함
+df = df.fillna(method='ffill')
+
+# 3. 중복 데이터 제거
+df = df.drop_duplicates()
+                    </code></pre>
+                </div>
+            </section>
+
+            <section>
+                <h3>2.2 데이터 필터링 (Filtering)</h3>
+                <p>특정 조건에 맞는 데이터 추출하기</p>
+                <div class="code-wrapper">
+                    <pre><code class="python">
+# Q. 기온이 35도 이상인 '폭염' 일수 데이터만 보고 싶다면?
+hot_days = df[df['Temp'] >= 35]
+
+# Q. 산불이 실제로 발생한(Fire) 데이터만 추출하려면?
+# 'Classes' 컬럼에 'fire'라는 문자열이 포함된 행 추출
+fires = df[df['Classes'].str.contains('fire')]
+
+print(f"폭염 일수: {len(hot_days)}일")
+print(f"산불 발생 건수: {len(fires)}건")
+                    </code></pre>
+                </div>
+            </section>
+
+            <section>
+                <h3>2.3 이상치 탐지 (Outlier Detection)</h3>
+                <p><b>IQR (Interquartile Range)</b> 방식 활용</p>
+                <div class="code-wrapper">
+                    <pre><code class="python">
+# 기온 데이터의 이상치 탐지
+Q1 = df['Temp'].quantile(0.25)
+Q3 = df['Temp'].quantile(0.75)
 IQR = Q3 - Q1
-outliers = df[(df['Ws'] < (Q1 - 1.5 * IQR)) | (df['Ws'] > (Q3 + 1.5 * IQR))]
 
-print(f"이상치(강풍 등) 개수: {len(outliers)}")
-                        </code></pre>
-                        <p>무조건 삭제하지 않고, '대형 산불'과의 연관성을 검토해야 함.</p>
-                    </section>
-                </section>
+lower_bound = Q1 - 1.5 * IQR
+upper_bound = Q3 + 1.5 * IQR
 
-                <!-- ================= 제3장: 탐색적 데이터 분석(EDA) 및 시각화 (2일차) ================= -->
-                <section>
-                    <section class="center-text" data-background-color="#f5f5dc">
-                        <h2>제3장: 탐색적 데이터 분석(EDA)<br>및 시각화</h2>
-                        <p>2일차: 패턴 발견 및 가설 검증</p>
-                    </section>
+# 이상치 출력
+outliers = df[(df['Temp'] < lower_bound) | (df['Temp'] > upper_bound)]
+print("이상치 데이터:\n", outliers)
+                    </code></pre>
+                </div>
+            </section>
 
-                    <section>
-                        <h3>3.1 통계적 상관관계 분석</h3>
-                        <ul>
-                            <li><strong>피어슨 상관계수:</strong> 변수 간 선형 관계 (-1 ~ 1). 예: Temp와 FFMC(양의 상관), RH와 FFMC(음의 상관).</li>
-                            <li><strong>히트맵 (Heatmap):</strong> 다중공선성 파악 및 핵심 변수 선별.</li>
-                        </ul>
-                        <pre><code class="python">
-import seaborn as sns
+            <section>
+                <h3>2.4 시각화: Matplotlib 기초</h3>
+                <p>기본적인 꺾은선 그래프 (Line Plot)</p>
+                <div class="code-wrapper">
+                    <pre><code class="python">
 import matplotlib.pyplot as plt
 
-plt.figure(figsize=(10,8))
-sns.heatmap(df.corr(), annot=True, cmap='coolwarm', fmt='.2f')
-plt.title("산불 변수 간 상관관계 히트맵")
-                        </code></pre>
-                    </section>
+plt.figure(figsize=(10, 5))
+# 날짜별 기온 변화
+plt.plot(df['Date'], df['Temp'], label='Temperature', color='red')
+plt.title('Daily Temperature Trend')
+plt.xlabel('Date')
+plt.ylabel('Temp (C)')
+plt.legend()
+plt.show()
+                    </code></pre>
+                </div>
+            </section>
 
-                    <section>
-                        <h3>3.2 데이터 시각화 기법</h3>
-                        <h4>3.2.1 분포 분석 (Histogram)</h4>
-                        <p>데이터의 치우침(Skewness) 확인. <code>kde=True</code>로 밀도 곡선 확인.</p>
-                        <h4>3.2.2 산점도와 회귀선 (Scatter Plot)</h4>
-                        <p>기온(Temp)과 FWI 관계. <code>hue='Classes'</code>로 산불 발생 여부 군집 분리.</p>
-                        <h4>3.2.3 박스 플롯 (Box Plot)</h4>
-                        <p>월별(Month) FWI 분포 비교. (예: 8월에 중앙값 및 산포도가 가장 높음 → 자원 집중 필요).</p>
-                    </section>
+            <section>
+                <h3>2.5 시각화: Seaborn 활용 (1)</h3>
+                <p>상관관계 히트맵 (Heatmap)</p>
+                <div class="code-wrapper">
+                    <pre><code class="python">
+import seaborn as sns
 
-                    <section>
-                        <h3>3.3 공간 정보 시각화 기초</h3>
-                        <p>산불은 공간적 현상입니다.</p>
-                        <ul>
-                            <li>포르투갈 데이터셋의 X, Y 좌표 활용.</li>
-                            <li>산점도의 크기(`size`)를 피해 면적(`area`)에 비례하게 설정.</li>
-                            <li>대형 산불이 자주 발생하는 <strong>Hotspot</strong> 지역 시각적 식별.</li>
-                        </ul>
-                    </section>
-                </section>
+# 기상 변수 간의 상관계수 계산
+corr_matrix = df[['Temp', 'RH', 'Ws', 'Rain', 'FWI']].corr()
 
-                <!-- ================= 제4장: 머신러닝 기반 산불 예측 모델링 (3일차 오전) ================= -->
-                <section>
-                    <section class="center-text" data-background-color="#e0ffff">
-                        <h2>제4장: 머신러닝 기반<br>산불 예측 모델링</h2>
-                        <p>3일차 오전: 예측 모델 구축 및 평가</p>
-                    </section>
+plt.figure(figsize=(8, 6))
+sns.heatmap(corr_matrix, annot=True, cmap='coolwarm', fmt='.2f')
+plt.title('Correlation Matrix of Weather Factors')
+plt.show()
+# 해석: 기온(Temp)과 FWI(산불지수)는 양의 상관관계가 높음
+                    </code></pre>
+                </div>
+            </section>
 
-                    <section>
-                        <h3>4.1 회귀 분석: 피해 면적 예측</h3>
-                        <ul>
-                            <li><strong>알고리즘:</strong> 선형 회귀(Baseline) → 결정 트리 → SVM (비선형 관계 학습).</li>
-                            <li><strong>평가 지표:</strong>
-                                <ul>
-                                    <li><strong>RMSE:</strong> 큰 오차에 민감.</li>
-                                    <li><strong>MAD:</strong> 이상치가 많은 산불 데이터에서 더 강건한 지표.</li>
-                                </ul>
-                            </li>
-                            <li><strong>전략:</strong> Train/Test 분할 (7:3), K-Fold 교차 검증으로 과적합 방지.</li>
-                        </ul>
-                    </section>
+            <section>
+                <h3>2.6 시각화: Seaborn 활용 (2)</h3>
+                <p>산점도 (Scatter Plot)와 회귀선</p>
+                <div class="code-wrapper">
+                    <pre><code class="python">
+plt.figure(figsize=(10, 6))
+# FWI(산불기상지수)와 실제 피해면적(Area) 관계
+sns.scatterplot(data=df, x='FWI', y='Area', hue='Classes', s=100)
 
-                    <section>
-                        <h3>4.2 분류 분석: 발생 위험도 예측</h3>
-                        <ul>
-                            <li><strong>목표:</strong> Fire vs Not Fire 판별.</li>
-                            <li><strong>알고리즘:</strong> 로지스틱 회귀, <strong>랜덤 포레스트(Random Forest)</strong>.</li>
-                            <li><strong>랜덤 포레스트 장점:</strong> 높은 정확도 + <strong>변수 중요도(Feature Importance)</strong> 산출 가능 (어떤 기상 요인이 핵심인지 해석).</li>
-                            <li><strong>평가 지표:</strong> 재현율(Recall) 중요 (실제 산불을 놓치지 않는 것이 핵심).</li>
-                        </ul>
-                    </section>
+plt.title('FWI vs Burned Area')
+plt.xlabel('Fire Weather Index')
+plt.ylabel('Burned Area (ha)')
+plt.show()
+                    </code></pre>
+                </div>
+            </section>
+        </section>
 
-                    <section>
-                        <h3>4.3 딥러닝과 생성형 AI 동향</h3>
-                        <ul>
-                            <li><strong>딥러닝:</strong> TensorFlow/Keras 활용 다층 퍼셉트론(MLP). 위성/CCTV 이미지 분석의 기초.</li>
-                            <li><strong>WildfireGPT & RAG:</strong> LLM을 산불 도메인에 특화. 문헌 검색 및 시나리오 예측에 검색 증강 생성(RAG) 기술 활용.</li>
-                        </ul>
-                    </section>
-                </section>
+        <section>
+            <section data-background-gradient="linear-gradient(to bottom, #4ca1af, #c4e0e5)">
+                <h2>Day 3: 머신러닝 & 생성형 AI</h2>
+                <p>Prediction Modeling & Research Automation</p>
+            </section>
 
-                <!-- ================= 제5장: 생성형 AI를 활용한 연구 효율화 전략 (3일차 오후) ================= -->
-                <section>
-                    <section class="center-text" data-background-color="#ffe4e1">
-                        <h2>제5장: 생성형 AI를 활용한<br>연구 효율화 전략</h2>
-                        <p>3일차 오후: 챗GPT, Gemini 등 연구 보조자 활용</p>
-                    </section>
+            <section>
+                <h3>3.1 머신러닝 개요</h3>
+                <p>Scikit-learn 라이브러리를 활용한 예측</p>
+                <ul>
+                    <li><b>입력(X):</b> 기온, 습도, 풍속, 강수량, FWI 지수</li>
+                    <li><b>출력(y):</b> 산불 발생 여부 (Classification) 또는 피해 면적 (Regression)</li>
+                    <li><b>절차:</b> 데이터 분할 -> 모델 학습 -> 예측 -> 평가</li>
+                </ul>
+            </section>
 
-                    <section>
-                        <h3>5.1 프롬프트 엔지니어링 (Prompt Engineering)</h3>
-                        <p>AI에게 정확한 답변을 얻기 위한 질문 설계 기술.</p>
-                        <ul>
-                            <li><strong>페르소나(Persona):</strong> "당신은 20년 경력의 산림 재난 데이터 분석가입니다."</li>
-                            <li><strong>맥락(Context):</strong> "알제리 데이터를 사용 중이며, Pandas로 결측치 처리 후 시각화하려 한다."</li>
-                            <li><strong>단계적 추론(Chain of Thought):</strong> "데이터 로드 → 전처리 → 시각화 순서로 코드를 설명해 달라."</li>
-                        </ul>
-                    </section>
+            <section>
+                <h3>3.2 데이터셋 분할 (Train/Test Split)</h3>
+                <div class="code-wrapper">
+                    <pre><code class="python">
+from sklearn.model_selection import train_test_split
 
-                    <section>
-                        <h3>5.2 AI 기반 코딩 및 디버깅</h3>
-                        <ul>
-                            <li><strong>에러 해결:</strong> 에러 메시지를 복사해 붙여넣고 "초보자도 알기 쉽게 원인과 해결책 설명해줘" 요청.</li>
-                            <li><strong>코드 최적화:</strong> "이 코드를 더 Pythonic하고 효율적으로 개선해줘."</li>
-                            <li><strong>데이터 해석:</strong> 통계 결과(상관계수 등)를 제공하고 "산불학적 의미를 해석해줘" 요청하여 논문 초안 작성 지원.</li>
-                        </ul>
-                    </section>
-                </section>
+# Feature(X)와 Target(y) 분리
+X = df[['Temp', 'RH', 'Ws', 'Rain', 'FWI']]
+y = df['Classes_binary'] # 1: Fire, 0: Not Fire
 
-                <!-- ================= 부록 및 결론 ================= -->
-                <section>
-                    <section>
-                        <h3>[부록] 3일차 교육 커리큘럼 요약</h3>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>일차</th><th>모듈</th><th>주요 내용</th><th>도구</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td rowspan="2">1일차</td><td>오전</td><td>환경 구축, 파이썬 문법</td><td>Colab</td></tr>
-                                <tr><td>오후</td><td>데이터 전처리 (결측/이상치)</td><td>Pandas</td></tr>
-                                <tr><td rowspan="2">2일차</td><td>오전</td><td>통계적 분석 (상관관계)</td><td>Seaborn</td></tr>
-                                <tr><td>오후</td><td>시각화 (분포, 시계열, 공간)</td><td>Matplotlib</td></tr>
-                                <tr><td rowspan="2">3일차</td><td>오전</td><td>머신러닝 (회귀/분류)</td><td>Scikit-learn</td></tr>
-                                <tr><td>오후</td><td>생성형 AI (프롬프트, 코딩)</td><td>ChatGPT</td></tr>
-                            </tbody>
-                        </table>
-                    </section>
+# 학습용 80%, 테스트용 20% 분할
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
 
-                    <section class="center-text">
-                        <h2>결론 및 제언</h2>
-                        <p>데이터 기반 산불 연구는 미래 재난을 예측하고<br>대응하는 강력한 무기입니다.</p>
-                        <p>본 100페이지 분량의 상세 커리큘럼이<br>연구자분들의 역량 강화에 초석이 되기를 바랍니다.</p>
-                        <br>
-                        <p><small>감사합니다.</small></p>
-                    </section>
-                </section>
+print(f"학습 데이터: {X_train.shape}, 테스트 데이터: {X_test.shape}")
+                    </code></pre>
+                </div>
+            </section>
 
-			</div>
-		</div>
+            <section>
+                <h3>3.3 모델 학습: 로지스틱 회귀</h3>
+                <p>산불 발생 확률 예측 (이진 분류)</p>
+                <div class="code-wrapper">
+                    <pre><code class="python">
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, classification_report
 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/notes/notes.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/markdown/markdown.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/highlight/highlight.min.js"></script>
-		<script>
-			Reveal.initialize({
-				hash: true,
-                slideNumber: true,
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+# 모델 생성 및 학습
+model = LogisticRegression()
+model.fit(X_train, y_train)
+
+# 예측 수행
+y_pred = model.predict(X_test)
+
+# 정확도 평가
+acc = accuracy_score(y_test, y_pred)
+print(f"모델 정확도: {acc:.2f}")
+                    </code></pre>
+                </div>
+            </section>
+
+            <section>
+                <h3>3.4 모델 학습: 랜덤 포레스트 (Random Forest)</h3>
+                <p>더 강력한 성능과 변수 중요도 확인</p>
+                <div class="code-wrapper">
+                    <pre><code class="python">
+from sklearn.ensemble import RandomForestClassifier
+
+rf_model = RandomForestClassifier(n_estimators=100, random_state=42)
+rf_model.fit(X_train, y_train)
+
+# 변수 중요도(Feature Importance) 출력
+importances = rf_model.feature_importances_
+for name, importance in zip(X.columns, importances):
+    print(f"{name}: {importance:.4f}")
+# 결과 해석: FWI 지수가 가장 중요한 요인으로 나타나는지 확인
+                    </code></pre>
+                </div>
+            </section>
+
+            <section>
+                <h3>3.5 생성형 AI 활용: 연구 코딩 보조</h3>
+                <p>ChatGPT / Gemini 프롬프트 엔지니어링</p>
+                <div class="two-col">
+                    <div class="col fragment">
+                        <h4>Bad Prompt ❌</h4>
+                        <p>"산불 데이터 분석 코드 짜줘."</p>
+                    </div>
+                    <div class="col fragment">
+                        <h4>Good Prompt ✅</h4>
+                        <p class="small-text">"나는 산림 연구자야. UCI 알제리 산불 데이터셋(CSV)을 가지고 있어. Pandas를 사용해서 'FWI' 지수와 'Temperature'의 상관관계를 분석하고, Seaborn 히트맵으로 시각화하는 파이썬 코드를 작성해줘. 결측치는 제거하는 단계도 포함해."</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h3>3.6 생성형 AI 활용: 논문 초안 작성</h3>
+                <p>분석 결과를 해석하고 연구 논의(Discussion) 확장</p>
+                <blockquote style="font-size: 0.8em; text-align: left;">
+                    <b>Prompt 예시:</b><br>
+                    "랜덤 포레스트 모델 분석 결과, 산불 발생에 가장 큰 영향을 미치는 변수는 'FWI'였고, 그 다음은 'RH(습도)'였습니다. 이 결과가 기존 산불 기상학 이론과 일치하는지 설명하고, 이를 바탕으로 정책적 제언을 포함한 논문의 '결론' 파트 초안을 작성해줘."
+                </blockquote>
+            </section>
+
+            <section>
+                <h3>3.7 미니 프로젝트 (종합 실습)</h3>
+                <p>개인별 관심 지역/주제 선정 및 분석</p>
+                <ol>
+                    <li><b>데이터 수집:</b> 기상청 ASOS 또는 산림청 데이터 다운로드</li>
+                    <li><b>전처리:</b> 날짜 형식 변환, 결측치 처리</li>
+                    <li><b>탐색:</b> 월별 발생 건수 그래프, 요일별 패턴 분석</li>
+                    <li><b>모델링:</b> 내일의 산불 위험도 예측 모델 만들기</li>
+                    <li><b>발표:</b> 분석 결과 요약 및 시각화 자료 공유</li>
+                </ol>
+            </section>
+        </section>
+
+        <section>
+            <h2>Q & A</h2>
+            <p>수고하셨습니다.</p>
+            <p><small>본 자료는 산불 연구 데이터 분석 역량 강화를 위해 제작되었습니다.</small></p>
+        </section>
+
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/markdown/markdown.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
+<script>
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        center: true,
+        hash: true,
+        slideNumber: true,
+        plugins: [ RevealMarkdown, RevealHighlight ]
+    });
+</script>
+
+</body>
 </html>
