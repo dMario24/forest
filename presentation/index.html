@@ -26,6 +26,19 @@
                 font-size: 0.75em;
                 line-height: 1.6;
             }
+            .reveal table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            .reveal th, .reveal td {
+                border: 1px solid #ccc;
+                padding: 8px;
+                font-size: 0.6em;
+            }
+            .reveal th {
+                background-color: #f2f2f2;
+                font-weight: bold;
+            }
             .reveal pre {
                 width: 100%;
                 box-shadow: none;
@@ -63,410 +76,296 @@
 		<div class="reveal">
 			<div class="slides">
 
-                <!-- ================= INTRO ================= -->
+                <!-- ================= 서론 ================= -->
 				<section>
                     <section class="center-text">
                         <h1>산불재난 연구데이터<br>분석 과정</h1>
-                        <h3>파이썬 비전공자 및 초보자 대상</h3>
-                        <p>3일 완성 집중 과정 (하루 8시간)</p>
-                        <p><small>Created for Research Data Analysis</small></p>
+                        <h3>파이썬 및 AI 활용 교육과정 심층 연구 보고서</h3>
+                        <p>데이터 기반 산불 재난 관리의 패러다임 전환</p>
                     </section>
 
                     <section>
-                        <h3>1. 강의 목표</h3>
+                        <h3>서론: 패러다임의 전환</h3>
                         <ul>
-                            <li><strong>대상 및 수준:</strong> 파이썬 비전공자 및 초보자 (2~3일 내 기초 역량 확보)</li>
-                            <li><strong>핵심 역량:</strong> 산불재난 연구 수행(논문, 프로젝트)에 필요한 데이터 분석 기초</li>
-                            <li><strong>결과물:</strong> 논문/보고서용 표·그래프 작성, 분석 결과 요약</li>
-                            <li><strong>AI 활용:</strong> ChatGPT, Gemini 등을 활용한 연구 벤치마킹 및 코딩 지원</li>
+                            <li><strong>배경:</strong> 기후 변화로 인한 전 지구적 산불 발생 빈도 및 강도 증가 (사회적, 경제적 재난 확대).</li>
+                            <li><strong>변화:</strong> 경험과 인력 중심의 전통적 진화 체계 → 데이터 기반의 과학적 분석과 예측 시스템으로 전환.</li>
+                            <li><strong>핵심 자원:</strong> 산림청, 기상청 등 공공기관의 방대한 산림/기상 데이터.</li>
+                            <li><strong>목표:</strong> 산불 발생 메커니즘 규명, 확산 예측, 진화 자원 최적 배치.</li>
                         </ul>
-                    </section>
-
-                    <section>
-                        <h3>2. 전체 로드맵</h3>
-                        <div class="col-container">
-                            <div class="col">
-                                <h4>Day 1: 기초 다지기</h4>
-                                <ul>
-                                    <li>실습환경(Colab) 구축</li>
-                                    <li>파이썬 필수 문법</li>
-                                    <li>Pandas 데이터 다루기</li>
-                                </ul>
-                            </div>
-                            <div class="col">
-                                <h4>Day 2: 분석 및 시각화</h4>
-                                <ul>
-                                    <li>데이터 전처리(결측/이상치)</li>
-                                    <li>기술 통계 분석</li>
-                                    <li>데이터 시각화(Matplotlib)</li>
-                                </ul>
-                            </div>
-                            <div class="col">
-                                <h4>Day 3: AI 활용 & 프로젝트</h4>
-                                <ul>
-                                    <li>생성형 AI 활용법</li>
-                                    <li>연구 기획 및 실행</li>
-                                    <li>미니 프로젝트 발표</li>
-                                </ul>
-                            </div>
-                        </div>
                     </section>
                 </section>
 
-                <!-- ================= DAY 1 ================= -->
+                <!-- ================= 제1장: 교육 환경 및 기초 프로그래밍 전략 (1일차 오전) ================= -->
                 <section>
                     <section class="center-text" data-background-color="#f0f8ff">
-                        <h2>Day 1: 파이썬 및 데이터 분석 기초</h2>
-                        <p>데이터 분석을 위한 첫 걸음</p>
+                        <h2>제1장: 교육 환경 및<br>기초 프로그래밍 전략</h2>
+                        <p>1일차 오전: 연구 환경 구축 및 파이썬 기초</p>
                     </section>
 
                     <section>
-                        <h3>1-1. 오리엔테이션 및 환경 구축</h3>
-                        <h4>Google Colab이란?</h4>
+                        <h3>1.1 클라우드 기반 연구 환경: Google Colab</h3>
+                        <p>연구자들의 가장 큰 장애물인 '환경 설정' 문제를 해결하기 위한 최적의 대안.</p>
                         <ul>
-                            <li>구글에서 제공하는 클라우드 기반 주피터 노트북 환경</li>
-                            <li>별도의 설치 없이 브라우저에서 바로 파이썬 코드 실행 가능</li>
-                            <li>GPU/TPU 무료 지원 (딥러닝 활용 시 유리)</li>
-                            <li>데이터 분석 입문자에게 최적의 환경</li>
+                            <li><strong>접근성/편의성:</strong> 설치 없이 구글 계정으로 즉시 사용 가능 (IT 비전공자 친화적).</li>
+                            <li><strong>협업/공유:</strong> 구글 드라이브 연동, 코드 실시간 공유 (공동 연구에 최적).</li>
+                            <li><strong>고성능 자원:</strong> GPU 무료 지원 (딥러닝, 위성 이미지 처리 등 고부하 작업 가능).</li>
                         </ul>
                     </section>
 
                     <section>
-                        <h3>Colab 시작하기</h3>
-                        <ol>
-                            <li>Google 계정 로그인</li>
-                            <li><a href="https://colab.research.google.com" target="_blank">colab.research.google.com</a> 접속</li>
-                            <li>[새 노트] 클릭</li>
-                            <li>파일명 변경: <code>wildfire_analysis_day1.ipynb</code></li>
-                        </ol>
-                        <br><br>
-                        <div class="fragment">
-                            <p><strong>Tip:</strong> <code>Ctrl + Enter</code>로 셀 실행, <code>Shift + Enter</code>로 실행 후 다음 셀 이동</p>
-                        </div>
+                        <h3>1.1.1 Colab 인터페이스 및 워크플로우</h3>
+                        <ul>
+                            <li><strong>파일 생성:</strong> `.ipynb` 확장자 (코드 + 텍스트 + 시각화 통합 문서).</li>
+                            <li><strong>코드 셀 (Code Cell):</strong> 실제 파이썬 명령어 실행 공간.</li>
+                            <li><strong>텍스트 셀 (Text Cell):</strong> 연구 방법론, 가설, 해석 기록 (연구 재현성 확보).</li>
+                        </ul>
                     </section>
 
                     <section>
-                        <h3>1-2. 파이썬 기초 문법 (변수와 자료형)</h3>
-                        <pre><code class="python">
-# 변수 선언
-fire_count = 150        # 정수형 (int)
-damaged_area = 30.5     # 실수형 (float)
-location = "강원도"      # 문자열 (str)
-is_active = False       # 불리언 (bool)
-
-# 출력 확인
-print(f"발생 지역: {location}")
-print(f"피해 면적: {damaged_area} ha")
-                        </code></pre>
-                        <p>변수는 데이터를 담는 그릇입니다. 산불 데이터의 속성(면적, 지역 등)을 변수로 표현해봅시다.</p>
+                        <h3>1.2 연구자를 위한 파이썬 핵심 문법</h3>
+                        <p>산불 데이터 유형에 맞춘 변수 및 데이터 타입 교육.</p>
+                        <ul>
+                            <li><strong>수치형:</strong> 기온(Float), 습도(Float), 풍속(Float), 발생 건수(Integer).</li>
+                            <li><strong>문자열:</strong> 지역명('강원도', 'Bejaia'), 요일('mon'). *인코딩(UTF-8, CP949) 주의 필요.</li>
+                            <li><strong>리스트:</strong> 시계열 데이터 (일별 최고 기온 나열).</li>
+                            <li><strong>딕셔너리:</strong> 구조화된 데이터 (특정 날짜의 기상 정보 Key-Value 쌍).</li>
+                        </ul>
                     </section>
 
                     <section>
-                        <h3>리스트(List)와 딕셔너리(Dictionary)</h3>
+                        <h3>1.2.2 제어문과 라이브러리 활용</h3>
+                        <p>논리적 판단을 코드로 구현하는 실습.</p>
                         <pre><code class="python">
-# 리스트: 순서가 있는 데이터 묶음
-locations = ["강릉", "삼척", "고성", "동해"]
-print(locations[0])  # 강릉
+# 예제: 산불 경보 발령 로직
+humidity = 25  # 습도 (%)
+wind_speed = 12 # 풍속 (m/s)
 
-# 딕셔너리: 키(Key)와 값(Value)의 쌍
-fire_info = {
-    "date": "2023-04-11",
-    "loc": "강릉",
-    "area": 379
-}
-print(fire_info["area"])  # 379
-                        </code></pre>
-                    </section>
-
-                    <section>
-                        <h3>조건문 (if-else)</h3>
-                        <p>데이터를 필터링하거나 조건을 판단할 때 사용합니다.</p>
-                        <pre><code class="python">
-area = 150
-
-if area >= 100:
-    print("대형 산불입니다.")
-    category = "Large"
-elif area >= 30:
-    print("중형 산불입니다.")
-    category = "Medium"
+if humidity < 30 and wind_speed >= 10:
+    print("🚨 [위험] 산불경보 발령 조건 충족")
 else:
-    print("소형 산불입니다.")
-    category = "Small"
+    print("✅ 기상 조건 양호")
                         </code></pre>
-                    </section>
-
-                    <section>
-                        <h3>반복문 (for)</h3>
-                        <p>여러 데이터를 순차적으로 처리할 때 사용합니다.</p>
-                        <pre><code class="python">
-areas = [10, 55, 120, 5]
-total_area = 0
-
-for a in areas:
-    total_area += a
-    if a >= 100:
-        print(f"대형 산불 발견: {a} ha")
-
-print(f"총 피해 면적: {total_area} ha")
-                        </code></pre>
-                    </section>
-
-                    <section>
-                        <h3>함수 (Function)</h3>
-                        <p>반복되는 코드를 묶어서 재사용성을 높입니다.</p>
-                        <pre><code class="python">
-def classify_fire(area):
-    """피해 면적에 따라 산불 등급을 반환하는 함수"""
-    if area >= 100:
-        return "대형"
-    elif area >= 30:
-        return "중형"
-    else:
-        return "소형"
-
-# 함수 사용
-print(classify_fire(120))  # 대형
-print(classify_fire(15))   # 소형
-                        </code></pre>
-                    </section>
-
-                    <section>
-                        <h3>1-3. Pandas 기초 (데이터 분석의 핵심)</h3>
-                        <p><strong>Pandas</strong>는 행과 열로 이루어진 2차원 데이터를 다루는 데 가장 강력한 라이브러리입니다.</p>
-                        <pre><code class="python">
-import pandas as pd
-
-# 가상의 산불 데이터 생성
-data = {
-    "date": ["2023-01-01", "2023-01-05", "2023-02-10", "2023-03-01"],
-    "location": ["서울", "경기", "강원", "경북"],
-    "cause": ["담뱃불", "소각", "입산자실화", "원인미상"],
-    "area": [0.5, 1.2, 55.0, 120.0]
-}
-
-df = pd.DataFrame(data)
-df
-                        </code></pre>
-                    </section>
-
-                    <section>
-                        <h3>데이터 불러오기 및 저장하기</h3>
-                        <pre><code class="python">
-# CSV 파일 불러오기 (Excel 파일은 read_excel)
-# df = pd.read_csv("wildfire_data.csv", encoding="cp949")
-
-# 데이터 정보 확인
-df.info()      # 컬럼별 타입, 결측치 개수 등 확인
-df.head()      # 상위 5개 행 출력
-df.describe()  # 수치형 데이터 기초 통계 (평균, 최소, 최대 등)
-                        </code></pre>
-                        <p class="fragment highlight-red">Tip: 한글이 포함된 CSV는 `encoding="cp949"` 또는 `encoding="euc-kr"` 옵션이 필요한 경우가 많습니다.</p>
-                    </section>
-
-                    <section>
-                        <h3>데이터 선택 및 필터링</h3>
-                        <pre><code class="python">
-# 특정 컬럼 선택
-print(df["location"])
-
-# 조건부 필터링 (Boolean Indexing)
-# 피해 면적이 10ha 이상인 데이터만 추출
-large_fires = df[df["area"] >= 10]
-
-# 여러 조건 (AND: &, OR: |)
-# 강원도이면서 피해면적이 30 이상인 경우
-target = df[(df["location"] == "강원") & (df["area"] >= 30)]
-                        </code></pre>
+                        <p><strong>필수 라이브러리:</strong> <code>NumPy</code> (수치 연산), <code>Pandas</code> (데이터 프레임 처리).</p>
                     </section>
                 </section>
 
-                <!-- ================= DAY 2 ================= -->
+                <!-- ================= 제2장: 산불 연구 데이터의 구조와 전처리 (1일차 오후) ================= -->
                 <section>
                     <section class="center-text" data-background-color="#fff5f0">
-                        <h2>Day 2: 데이터 전처리 및 시각화</h2>
-                        <p>데이터를 깨끗하게 만들고 인사이트 발견하기</p>
+                        <h2>제2장: 산불 연구 데이터의<br>구조와 전처리</h2>
+                        <p>1일차 오후: 데이터 품질 확보와 가공</p>
                     </section>
 
                     <section>
-                        <h3>2-1. 데이터 전처리 심화</h3>
-                        <h4>결측치(Missing Values) 처리</h4>
-                        <p>데이터가 비어있는 경우(NaN) 분석 오류를 유발하므로 적절한 처리가 필요합니다.</p>
-                        <pre><code class="python">
-# 결측치 확인
-df.isnull().sum()
-
-# 1. 결측치가 있는 행 제거
-df_clean = df.dropna()
-
-# 2. 특정 값으로 채우기 (예: 평균값, 0)
-mean_val = df["area"].mean()
-df["area"] = df["area"].fillna(mean_val)
-                        </code></pre>
-                    </section>
-
-                    <section>
-                        <h3>이상치(Outlier) 처리</h3>
-                        <p>통계적으로 비정상적으로 크거나 작은 값은 분석 결과를 왜곡할 수 있습니다.</p>
-                        <pre><code class="python">
-# 기술 통계로 이상치 짐작해보기
-print(df["area"].describe())
-
-# IQR 방식 등으로 제거하거나,
-# 도메인 지식에 따라 별도 그룹으로 분류하여 분석합니다.
-                        </code></pre>
-                    </section>
-
-                    <section>
-                        <h3>데이터 타입 변환</h3>
-                        <p>날짜 정보가 문자열(string)로 되어 있다면 날짜형(datetime)으로 변환해야 시계열 분석이 가능합니다.</p>
-                        <pre><code class="python">
-# 문자열 -> 날짜형 변환
-df["date"] = pd.to_datetime(df["date"])
-
-# 월(Month), 요일(Weekday) 추출
-df["month"] = df["date"].dt.month
-df["weekday"] = df["date"].dt.day_name()
-                        </code></pre>
-                    </section>
-
-                    <section>
-                        <h3>2-2. 기술 통계 및 그룹 분석</h3>
-                        <h4>Group By: 범주별 통계 산출</h4>
-                        <p>지역별, 원인별 산불 통계를 구해봅시다.</p>
-                        <pre><code class="python">
-# 지역별 피해 면적 합계
-area_by_loc = df.groupby("location")["area"].sum()
-print(area_by_loc)
-
-# 원인별 발생 건수
-count_by_cause = df["cause"].value_counts()
-print(count_by_cause)
-                        </code></pre>
-                    </section>
-
-                    <section>
-                        <h3>2-3. 데이터 시각화 (Matplotlib & Seaborn)</h3>
-                        <p>숫자만으로는 보이지 않는 패턴을 그래프로 표현합니다.</p>
-                        <pre><code class="python">
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-# 한글 폰트 설정 (Colab용)
-!sudo apt-get install -y fonts-nanum
-!sudo fc-cache -fv
-!rm ~/.cache/matplotlib -rf
-# (런타임 재시작 필요)
-plt.rc('font', family='NanumBarunGothic')
-                        </code></pre>
-                    </section>
-
-                    <section>
-                        <h3>막대 그래프 (Bar Chart)</h3>
-                        <p>범주형 데이터의 크기 비교에 적합합니다. (예: 지역별 피해액)</p>
-                        <pre><code class="python">
-plt.figure(figsize=(10, 6))
-sns.barplot(data=df, x="location", y="area", errorbar=None)
-plt.title("지역별 평균 피해 면적")
-plt.xlabel("지역")
-plt.ylabel("피해 면적 (ha)")
-plt.show()
-                        </code></pre>
-                    </section>
-
-                    <section>
-                        <h3>선 그래프 (Line Chart)</h3>
-                        <p>시간의 흐름에 따른 변화 추이를 보여줍니다. (예: 월별 산불 발생 건수)</p>
-                        <pre><code class="python">
-monthly_counts = df.groupby("month")["date"].count()
-
-plt.figure(figsize=(10, 5))
-plt.plot(monthly_counts.index, monthly_counts.values, marker='o')
-plt.title("월별 산불 발생 추이")
-plt.grid(True)
-plt.show()
-                        </code></pre>
-                    </section>
-
-                    <section>
-                        <h3>산점도 (Scatter Plot)</h3>
-                        <p>두 수치형 변수 간의 관계를 파악합니다. (예: 습도와 피해 면적)</p>
-                        <pre><code class="python">
-plt.figure(figsize=(8, 8))
-sns.scatterplot(data=df, x="humidity", y="area", hue="cause")
-plt.title("습도와 피해 면적의 상관관계")
-plt.show()
-                        </code></pre>
-                    </section>
-                </section>
-
-                <!-- ================= DAY 3 ================= -->
-                <section>
-                    <section class="center-text" data-background-color="#f5f5f5">
-                        <h2>Day 3: 생성형 AI 활용 및 프로젝트</h2>
-                        <p>AI와 함께하는 스마트한 연구 데이터 분석</p>
-                    </section>
-
-                    <section>
-                        <h3>3-1. 생성형 AI 도구 활용법</h3>
-                        <h4>ChatGPT / Gemini 활용 원칙</h4>
+                        <h3>2.1 글로벌 표준 데이터셋: UCI 산불 데이터</h3>
+                        <h4>2.1.1 알제리 산불 데이터셋 (Algerian Forest Fires)</h4>
                         <ul>
-                            <li><strong>구체적인 지시(Prompt):</strong> 막연한 질문보다는 데이터 구조와 원하는 결과를 명확히 설명하세요.</li>
-                            <li><strong>코드 생성 요청:</strong> "Pandas로 'location' 컬럼별 'area' 합계를 구하고 막대 그래프를 그리는 코드를 짜줘."</li>
-                            <li><strong>오류 수정(Debugging):</strong> 에러 메시지를 그대로 복사해서 붙여넣고 해결책을 물어보세요.</li>
-                            <li><strong>검증 필수:</strong> AI가 생성한 코드가 항상 정답은 아닙니다. 반드시 실행하고 결과를 확인해야 합니다.</li>
+                            <li><strong>기간/장소:</strong> 2012년 6~9월, Bejaia & Sidi-Bel Abbes 지역 (244건).</li>
+                            <li><strong>특징:</strong> 결측치가 거의 없는 깨끗한 데이터셋 (초보자용).</li>
+                            <li><strong>Target:</strong> `Classes` (fire / not fire) → 이진 분류 모델 실습 최적화.</li>
+                            <li><strong>FWI 요소:</strong> FFMC, DMC, DC, ISI, BUI, FWI (산불 기상 지수).</li>
                         </ul>
                     </section>
 
                     <section>
-                        <h3>프롬프트 예시 (연구 벤치마킹)</h3>
-                        <div style="background-color: #eee; padding: 15px; border-radius: 5px;">
-                            <p><strong>User:</strong> "나는 최근 10년 간의 한국 산불 데이터를 분석하여 '기후 변화가 대형 산불에 미치는 영향'에 대한 소논문을 쓰려고 해. 어떤 변수들을 중점적으로 분석하면 좋을지, 그리고 어떤 시각화가 효과적일지 제안해줘."</p>
-                        </div>
-                        <p class="fragment">AI는 기상 데이터(온도, 습도, 풍속)와 산불 피해 면적 간의 상관분석, 월별 발생 빈도 히트맵 등을 제안해 줄 것입니다.</p>
+                        <h4>[표 1] 알제리 산불 데이터셋 주요 변수 정의</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>변수명</th><th>전체 이름</th><th>설명</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Temp</td><td>Temperature</td><td>정오 기준 최고 기온 (°C). 연료 건조의 주요 요인.</td></tr>
+                                <tr><td>RH</td><td>Relative Humidity</td><td>상대습도 (%). 산불 위험과 반비례.</td></tr>
+                                <tr><td>Ws</td><td>Wind Speed</td><td>풍속 (km/h). 확산 속도(ISI) 결정 변수.</td></tr>
+                                <tr><td>FFMC</td><td>Fine Fuel Moisture Code</td><td>미세 연료 수분 코드. 기상 변화에 민감.</td></tr>
+                                <tr><td>FWI</td><td>Fire Weather Index</td><td>종합 산불 기상 지수. 산불 강도 지표.</td></tr>
+                            </tbody>
+                        </table>
                     </section>
 
                     <section>
-                        <h3>프롬프트 예시 (코드 작성)</h3>
-                        <div style="background-color: #eee; padding: 15px; border-radius: 5px;">
-                            <p><strong>User:</strong> "내 DataFrame `df`에는 `date`(날짜), `cause`(원인), `area`(면적) 컬럼이 있어. 원인(`cause`) 중에서 상위 5개만 추려서, 각 원인별 피해 면적 분포를 박스플롯(boxplot)으로 시각화하는 파이썬 코드를 작성해줘. 한글 폰트 설정도 포함해줘."</p>
-                        </div>
+                        <h4>2.1.2 포르투갈 산불 데이터셋 (Forest Fires)</h4>
+                        <ul>
+                            <li><strong>장소:</strong> Montesinho Natural Park (517건).</li>
+                            <li><strong>특징:</strong> 피해 면적(`area`)이 0에 치우친 왜곡된 분포 (데이터 불균형).</li>
+                            <li><strong>전처리 핵심:</strong> 로그 변환(Log Transformation) 적용 (`ln(x+1)`) 필수.</li>
+                        </ul>
+                        <pre><code class="python">
+import numpy as np
+
+# 피해 면적의 왜곡된 분포 보정
+df['log_area'] = np.log1p(df['area'])
+                        </code></pre>
                     </section>
 
                     <section>
-                        <h3>3-2. 미니 프로젝트 기획</h3>
-                        <h4>단계별 가이드</h4>
-                        <ol>
-                            <li><strong>주제 선정:</strong> 관심 있는 키워드 (예: 봄철 산불, 강원도 대형 산불, 실화 원인 등)</li>
-                            <li><strong>데이터 수집/준비:</strong> 제공된 예제 데이터 또는 공공데이터포털 활용</li>
-                            <li><strong>분석 질문(RQ) 설정:</strong>
+                        <h3>2.2 국내 공공데이터 활용</h3>
+                        <ul>
+                            <li><strong>산림청 데이터:</strong> 발생 원인('기타', '입산자 실화'), 피해 면적 등. 인코딩(`cp949`), 날짜 변환 전처리 필요.</li>
+                            <li><strong>기상청 ASOS 데이터:</strong> 분/시간 단위 상세 기상 정보.</li>
+                            <li><strong>데이터 병합 (Merge):</strong> 산불 발생 위치/시간을 기준으로 가장 가까운 기상 관측소 데이터를 매칭(Join)하는 고급 전처리 기술 교육.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>2.3 데이터 정제 및 이상치 처리</h3>
+                        <h4>2.3.1 결측치 (Missing Value)</h4>
+                        <p>단순 평균 대체보다는 시계열 특성을 고려한 <code>ffill</code>(Forward Fill)이나 선형 보간법 권장.</p>
+                        <h4>2.3.2 이상치 (Outlier) - IQR 기법</h4>
+                        <pre><code class="python">
+# IQR을 이용한 이상치 탐지 예시
+Q1 = df['Ws'].quantile(0.25)
+Q3 = df['Ws'].quantile(0.75)
+IQR = Q3 - Q1
+outliers = df[(df['Ws'] < (Q1 - 1.5 * IQR)) | (df['Ws'] > (Q3 + 1.5 * IQR))]
+
+print(f"이상치(강풍 등) 개수: {len(outliers)}")
+                        </code></pre>
+                        <p>무조건 삭제하지 않고, '대형 산불'과의 연관성을 검토해야 함.</p>
+                    </section>
+                </section>
+
+                <!-- ================= 제3장: 탐색적 데이터 분석(EDA) 및 시각화 (2일차) ================= -->
+                <section>
+                    <section class="center-text" data-background-color="#f5f5dc">
+                        <h2>제3장: 탐색적 데이터 분석(EDA)<br>및 시각화</h2>
+                        <p>2일차: 패턴 발견 및 가설 검증</p>
+                    </section>
+
+                    <section>
+                        <h3>3.1 통계적 상관관계 분석</h3>
+                        <ul>
+                            <li><strong>피어슨 상관계수:</strong> 변수 간 선형 관계 (-1 ~ 1). 예: Temp와 FFMC(양의 상관), RH와 FFMC(음의 상관).</li>
+                            <li><strong>히트맵 (Heatmap):</strong> 다중공선성 파악 및 핵심 변수 선별.</li>
+                        </ul>
+                        <pre><code class="python">
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(10,8))
+sns.heatmap(df.corr(), annot=True, cmap='coolwarm', fmt='.2f')
+plt.title("산불 변수 간 상관관계 히트맵")
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>3.2 데이터 시각화 기법</h3>
+                        <h4>3.2.1 분포 분석 (Histogram)</h4>
+                        <p>데이터의 치우침(Skewness) 확인. <code>kde=True</code>로 밀도 곡선 확인.</p>
+                        <h4>3.2.2 산점도와 회귀선 (Scatter Plot)</h4>
+                        <p>기온(Temp)과 FWI 관계. <code>hue='Classes'</code>로 산불 발생 여부 군집 분리.</p>
+                        <h4>3.2.3 박스 플롯 (Box Plot)</h4>
+                        <p>월별(Month) FWI 분포 비교. (예: 8월에 중앙값 및 산포도가 가장 높음 → 자원 집중 필요).</p>
+                    </section>
+
+                    <section>
+                        <h3>3.3 공간 정보 시각화 기초</h3>
+                        <p>산불은 공간적 현상입니다.</p>
+                        <ul>
+                            <li>포르투갈 데이터셋의 X, Y 좌표 활용.</li>
+                            <li>산점도의 크기(`size`)를 피해 면적(`area`)에 비례하게 설정.</li>
+                            <li>대형 산불이 자주 발생하는 <strong>Hotspot</strong> 지역 시각적 식별.</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <!-- ================= 제4장: 머신러닝 기반 산불 예측 모델링 (3일차 오전) ================= -->
+                <section>
+                    <section class="center-text" data-background-color="#e0ffff">
+                        <h2>제4장: 머신러닝 기반<br>산불 예측 모델링</h2>
+                        <p>3일차 오전: 예측 모델 구축 및 평가</p>
+                    </section>
+
+                    <section>
+                        <h3>4.1 회귀 분석: 피해 면적 예측</h3>
+                        <ul>
+                            <li><strong>알고리즘:</strong> 선형 회귀(Baseline) → 결정 트리 → SVM (비선형 관계 학습).</li>
+                            <li><strong>평가 지표:</strong>
                                 <ul>
-                                    <li>"산불은 무슨 요일에 가장 많이 발생하는가?"</li>
-                                    <li>"강풍 주의보가 발령된 날의 피해 면적이 더 큰가?"</li>
+                                    <li><strong>RMSE:</strong> 큰 오차에 민감.</li>
+                                    <li><strong>MAD:</strong> 이상치가 많은 산불 데이터에서 더 강건한 지표.</li>
                                 </ul>
                             </li>
-                            <li><strong>분석 및 시각화 수행</strong></li>
-                            <li><strong>결과 해석 및 요약</strong></li>
-                        </ol>
+                            <li><strong>전략:</strong> Train/Test 분할 (7:3), K-Fold 교차 검증으로 과적합 방지.</li>
+                        </ul>
                     </section>
 
                     <section>
-                        <h3>3-3. 결과 정리 및 발표</h3>
-                        <h4>논문/보고서용 표·그래프 작성 팁</h4>
+                        <h3>4.2 분류 분석: 발생 위험도 예측</h3>
                         <ul>
-                            <li><strong>가독성:</strong> 축 라벨, 범례, 제목을 명확히 기재합니다.</li>
-                            <li><strong>단순화:</strong> 불필요한 장식(3D 효과 등)을 피하고 정보 전달에 집중합니다.</li>
-                            <li><strong>해석:</strong> 그래프 아래에는 반드시 "Figure 1은 ~을 보여준다"와 같은 캡션과 해석을 덧붙입니다.</li>
+                            <li><strong>목표:</strong> Fire vs Not Fire 판별.</li>
+                            <li><strong>알고리즘:</strong> 로지스틱 회귀, <strong>랜덤 포레스트(Random Forest)</strong>.</li>
+                            <li><strong>랜덤 포레스트 장점:</strong> 높은 정확도 + <strong>변수 중요도(Feature Importance)</strong> 산출 가능 (어떤 기상 요인이 핵심인지 해석).</li>
+                            <li><strong>평가 지표:</strong> 재현율(Recall) 중요 (실제 산불을 놓치지 않는 것이 핵심).</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>4.3 딥러닝과 생성형 AI 동향</h3>
+                        <ul>
+                            <li><strong>딥러닝:</strong> TensorFlow/Keras 활용 다층 퍼셉트론(MLP). 위성/CCTV 이미지 분석의 기초.</li>
+                            <li><strong>WildfireGPT & RAG:</strong> LLM을 산불 도메인에 특화. 문헌 검색 및 시나리오 예측에 검색 증강 생성(RAG) 기술 활용.</li>
                         </ul>
                     </section>
                 </section>
 
-                <!-- ================= CLOSING ================= -->
-                <section class="center-text">
-                    <h2>수고하셨습니다!</h2>
-                    <p>이제 여러분은 파이썬을 활용해 산불 데이터를 직접 분석하고<br>연구에 활용할 수 있는 기초 역량을 갖추셨습니다.</p>
-                    <br>
-                    <p><small>본 자료는 산불재난 연구데이터 분석 과정을 위해 제작되었습니다.</small></p>
+                <!-- ================= 제5장: 생성형 AI를 활용한 연구 효율화 전략 (3일차 오후) ================= -->
+                <section>
+                    <section class="center-text" data-background-color="#ffe4e1">
+                        <h2>제5장: 생성형 AI를 활용한<br>연구 효율화 전략</h2>
+                        <p>3일차 오후: 챗GPT, Gemini 등 연구 보조자 활용</p>
+                    </section>
+
+                    <section>
+                        <h3>5.1 프롬프트 엔지니어링 (Prompt Engineering)</h3>
+                        <p>AI에게 정확한 답변을 얻기 위한 질문 설계 기술.</p>
+                        <ul>
+                            <li><strong>페르소나(Persona):</strong> "당신은 20년 경력의 산림 재난 데이터 분석가입니다."</li>
+                            <li><strong>맥락(Context):</strong> "알제리 데이터를 사용 중이며, Pandas로 결측치 처리 후 시각화하려 한다."</li>
+                            <li><strong>단계적 추론(Chain of Thought):</strong> "데이터 로드 → 전처리 → 시각화 순서로 코드를 설명해 달라."</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>5.2 AI 기반 코딩 및 디버깅</h3>
+                        <ul>
+                            <li><strong>에러 해결:</strong> 에러 메시지를 복사해 붙여넣고 "초보자도 알기 쉽게 원인과 해결책 설명해줘" 요청.</li>
+                            <li><strong>코드 최적화:</strong> "이 코드를 더 Pythonic하고 효율적으로 개선해줘."</li>
+                            <li><strong>데이터 해석:</strong> 통계 결과(상관계수 등)를 제공하고 "산불학적 의미를 해석해줘" 요청하여 논문 초안 작성 지원.</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <!-- ================= 부록 및 결론 ================= -->
+                <section>
+                    <section>
+                        <h3>[부록] 3일차 교육 커리큘럼 요약</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>일차</th><th>모듈</th><th>주요 내용</th><th>도구</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td rowspan="2">1일차</td><td>오전</td><td>환경 구축, 파이썬 문법</td><td>Colab</td></tr>
+                                <tr><td>오후</td><td>데이터 전처리 (결측/이상치)</td><td>Pandas</td></tr>
+                                <tr><td rowspan="2">2일차</td><td>오전</td><td>통계적 분석 (상관관계)</td><td>Seaborn</td></tr>
+                                <tr><td>오후</td><td>시각화 (분포, 시계열, 공간)</td><td>Matplotlib</td></tr>
+                                <tr><td rowspan="2">3일차</td><td>오전</td><td>머신러닝 (회귀/분류)</td><td>Scikit-learn</td></tr>
+                                <tr><td>오후</td><td>생성형 AI (프롬프트, 코딩)</td><td>ChatGPT</td></tr>
+                            </tbody>
+                        </table>
+                    </section>
+
+                    <section class="center-text">
+                        <h2>결론 및 제언</h2>
+                        <p>데이터 기반 산불 연구는 미래 재난을 예측하고<br>대응하는 강력한 무기입니다.</p>
+                        <p>본 100페이지 분량의 상세 커리큘럼이<br>연구자분들의 역량 강화에 초석이 되기를 바랍니다.</p>
+                        <br>
+                        <p><small>감사합니다.</small></p>
+                    </section>
                 </section>
 
 			</div>
